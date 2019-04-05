@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :user do
-    username { "" }
-    session_token { "MyString" }
-    password_digest { "MyString" }
+    username { Faker::Name.name }
+    password { "password" }
+    # session_token { }
+    # password_digest { }
   end
 end
