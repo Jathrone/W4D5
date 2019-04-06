@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <h1>GOALING APP</h1>
+
+    <header>
+      <%# if logged_in? %>
+        <form action="<%= session_url %>" value="post">
+          <input type="hidden" name="_method" value="delete">
+          <%= auth_token %>
+          <input type="submit" value="Log Out">
+        </form>
+
+    </header>
     <%= yield %>
   </body>
 </html>

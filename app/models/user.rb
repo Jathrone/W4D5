@@ -1,4 +1,4 @@
-require "bcrypt" #? ask TA after
+
 class User < ApplicationRecord
     attr_reader :password
 
@@ -13,6 +13,15 @@ class User < ApplicationRecord
         self.password_digest = BCrypt::Password.create(password)
     end
 
+    def is_password?(password)
+        BCrypt::Password.new(self.password_digest).is_password?(password)
+    end
+
+    def self.find_by_credentials(username, password)
+        user = User.find_by(username: username)
+        user && user.is_password?(password) ? user : nil 
+    end
+    
     has_many :goals,
         primary_key: :id,
         foreign_key: :user_id,

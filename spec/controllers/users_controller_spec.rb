@@ -27,8 +27,7 @@ RSpec.describe UsersController, type: :controller do
             end
 
             it "redirects to the user homepage" do 
-                debugger
-                expect(response).to render_template(user_path(User.last))
+                expect(response).to redirect_to(user_path(User.last))
             end
         end 
     end
